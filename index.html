@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VYRO - Global Short Videos</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow:hidden;
+}
+
+/* APP */
+
+.app{
+    width:100%;
+    height:100vh;
+    position:relative;
+    background:#000;
+}
+
+/* VIDEO FEED */
+
+.feed{
+    width:100%;
+    height:100vh;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+}
+
+.feed::-webkit-scrollbar{
+    display:none;
+}
+
+.video{
+    width:100%;
+    height:100vh;
+    position:relative;
+    scroll-snap-align:start;
+    overflow:hidden;
+    background:linear-gradient(135deg,#111,#333);
+}
+
+.video-bg{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+}
+
+/* DARK OVERLAY */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 45%,
+        rgba(0,0,0,.15) 60%,
+        rgba(0,0,0,.85) 100%
+    );
+}
+
+/* TOP */
+
+.top{
+    position:absolute;
+    top:20px;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    z-index:5;
+}
+
+.tabs{
+    display:flex;
+    gap:25px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.tabs span{
+    opacity:.65;
+}
+
+.tabs .active{
+    opacity:1;
+    border-bottom:2px solid #fff;
+    padding-bottom:7px;
+}
+
+/* LOGO */
+
+.logo{
+    position:absolute;
+    top:20px;
+    left:18px;
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:2px;
+    z-index:6;
+}
+
+/* RIGHT ACTIONS */
+
+.actions{
+    position:absolute;
+    right:12px;
+    bottom:105px;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.action{
+    text-align:center;
+    font-size:12px;
+}
+
+.action button{
+    border:0;
+    background:rgba(0,0,0,.35);
+    color:#fff;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.action button:active{
+    transform:scale(.88);
+}
+
+.like.active button{
+    color:#ff1744;
+}
+
+.follow{
+    background:#ff1744 !important;
+    font-size:20px !important;
+}
+
+.count{
+    margin-top:4px;
+}
+
+/* VIDEO INFORMATION */
+
+.info{
+    position:absolute;
+    left:15px;
+    right:80px;
+    bottom:92px;
+    z-index:5;
+}
+
+.username{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.username span{
+    color:#aaa;
+    font-weight:normal;
+}
+
+.description{
+    font-size:15px;
+    line-height:1.4;
+    margin-bottom:10px;
+}
+
+.music{
+    font-size:13px;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:65px;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:20;
+}
+
+.nav-item{
+    color:#aaa;
+    text-align:center;
+    font-size:11px;
+}
+
+.nav-item div{
+    font-size:23px;
+    margin-bottom:2px;
+}
+
+.nav-item.active{
+    color:#fff;
+}
+
+.create{
+    width:48px;
+    height:34px;
+    background:#fff;
+    color:#000;
+    border-radius:10px;
+    font-size:27px;
+    line-height:32px;
+    font-weight:bold;
+}
+
+/* SEARCH */
+
+.search{
+    position:absolute;
+    top:58px;
+    right:15px;
+    z-index:10;
+}
+
+.search button{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:0;
+    background:rgba(0,0,0,.5);
+    color:white;
+    font-size:20px;
+}
+
+/* RESPONSIVE */
+
+@media(min-width:600px){
+
+    .app{
+        max-width:480px;
+        margin:auto;
+        box-shadow:0 0 40px #111;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="feed">
+
+        <!-- VIDEO 1 -->
+
+        <section class="video">
+
+            <div style="
+                position:absolute;
+                inset:0;
+                background:linear-gradient(135deg,#151515,#3d0066,#ff1744);
+            "></div>
+
+            <div class="overlay"></div>
+
+            <div class="logo">VYRO</div>
+
+            <div class="top">
+                <div class="tabs">
+                    <span>Following</span>
+                    <span class="active">For You</span>
+                </div>
+            </div>
+
+            <div class="search">
+                <button>🔍</button>
+            </div>
+
+            <div class="info">
+
+                <div class="username">
+                    @vyro_creator <span>✓</span>
+                </div>
+
+                <div class="description">
+                    Welcome to the future of short videos 🚀
+                    Create • Discover • Connect 🌍
+                </div>
+
+                <div class="music">
+                    🎵 Original Sound - VYRO
+                </div>
+
+            </div>
+
+            <div class="actions">
+
+                <div class="action like">
+                    <button onclick="like(this)">♥</button>
+                    <div class="count">12.4K</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="comment()">💬</button>
+                    <div class="count">843</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="share()">↗</button>
+                    <div class="count">Share</div>
+                </div>
+
+                <div class="action">
+                    <button class="follow" onclick="follow(this)">+</button>
+                    <div class="count">Follow</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO 2 -->
+
+        <section class="video">
+
+            <div style="
+                position:absolute;
+                inset:0;
+                background:linear-gradient(135deg,#001f3f,#0074D9,#7FDBFF);
+            "></div>
+
+            <div class="overlay"></div>
+
+            <div class="info">
+
+                <div class="username">
+                    @future_world <span>✓</span>
+                </div>
+
+                <div class="description">
+                    The world is changing fast 🌍
+                    Are you ready for the future?
+                </div>
+
+                <div class="music">
+                    🎵 Future Beat
+                </div>
+
+            </div>
+
+            <div class="actions">
+
+                <div class="action like">
+                    <button onclick="like(this)">♥</button>
+                    <div class="count">8.7K</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="comment()">💬</button>
+                    <div class="count">321</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="share()">↗</button>
+                    <div class="count">Share</div>
+                </div>
+
+                <div class="action">
+                    <button class="follow" onclick="follow(this)">+</button>
+                    <div class="count">Follow</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO 3 -->
+
+        <section class="video">
+
+            <div style="
+                position:absolute;
+                inset:0;
+                background:linear-gradient(135deg,#061700,#24c000,#b6ff00);
+            "></div>
+
+            <div class="overlay"></div>
+
+            <div class="info">
+
+                <div class="username">
+                    @new_creator
+                </div>
+
+                <div class="description">
+                    Your idea could be the next big thing 💡🔥
+                </div>
+
+                <div class="music">
+                    🎵 Creator Original
+                </div>
+
+            </div>
+
+            <div class="actions">
+
+                <div class="action like">
+                    <button onclick="like(this)">♥</button>
+                    <div class="count">4.2K</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="comment()">💬</button>
+                    <div class="count">192</div>
+                </div>
+
+                <div class="action">
+                    <button onclick="share()">↗</button>
+                    <div class="count">Share</div>
+                </div>
+
+                <div class="action">
+                    <button class="follow" onclick="follow(this)">+</button>
+                    <div class="count">Follow</div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <div class="bottom">
+
+        <div class="nav-item active">
+            <div>⌂</div>
+            Home
+        </div>
+
+        <div class="nav-item">
+            <div>🔍</div>
+            Discover
+        </div>
+
+        <div class="nav-item">
+            <div class="create">+</div>
+        </div>
+
+        <div class="nav-item">
+            <div>💬</div>
+            Inbox
+        </div>
+
+        <div class="nav-item">
+            <div>👤</div>
+            Profile
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function like(button){
+
+    const parent = button.parentElement;
+
+    parent.classList.toggle("active");
+
+    if(parent.classList.contains("active")){
+        button.innerHTML = "♥";
+    }else{
+        button.innerHTML = "♥";
+    }
+
+}
+
+
+function follow(button){
+
+    if(button.innerHTML === "+"){
+        button.innerHTML = "✓";
+        button.style.background = "#444";
+    }else{
+        button.innerHTML = "+";
+        button.style.background = "#ff1744";
+    }
+
+}
+
+
+function comment(){
+
+    alert("Comments feature will be connected in the next version.");
+}
+
+
+function share(){
+
+    if(navigator.share){
+
+        navigator.share({
+            title:"VYRO",
+            text:"Check out this video on VYRO!"
+        });
+
+    }else{
+
+        alert("Share feature will be connected soon.");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+<input
+    type="file"
+    id="videoPicker"
+    accept="video/*"
+    style="display:none"
+>
+
+<script>
+
+const videoPicker = document.getElementById("videoPicker");
+
+document.querySelector(".create").addEventListener("click", function(){
+
+    videoPicker.click();
+
+});
+
+videoPicker.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file){
+        return;
+    }
+
+    if(!file.type.startsWith("video/")){
+        alert("Please select a video.");
+        return;
+    }
+
+    const videoURL = URL.createObjectURL(file);
+
+    const newVideo = document.createElement("section");
+
+    newVideo.className = "video";
+
+    newVideo.innerHTML = `
+        <video
+            class="video-bg"
+            src="${videoURL}"
+            autoplay
+            muted
+            loop
+            playsinline
+        ></video>
+
+        <div class="overlay"></div>
+
+        <div class="info">
+            <div class="username">
+                @new_creator
+            </div>
+
+            <div class="description">
+                My first video on VYRO 🚀
+            </div>
+
+            <div class="music">
+                🎵 Original Sound
+            </div>
+        </div>
+
+        <div class="actions">
+
+            <div class="action like">
+                <button onclick="like(this)">♥</button>
+                <div class="count">0</div>
+            </div>
+
+            <div class="action">
+                <button onclick="comment()">💬</button>
+                <div class="count">0</div>
+            </div>
+
+            <div class="action">
+                <button onclick="share()">↗</button>
+                <div class="count">Share</div>
+            </div>
+
+        </div>
+    `;
+
+    document.querySelector(".feed").prepend(newVideo);
+
+});
+
+</script>
+<!-- VYRO AUTH SYSTEM -->
+
+<div id="authScreen" class="auth-screen">
+
+    <div class="auth-box">
+
+        <div class="auth-logo">VYRO</div>
+
+        <h2 id="authTitle">Create Account</h2>
+
+        <p id="authSubtitle">
+            Join the future of short videos
+        </p>
+
+        <input
+            id="nameInput"
+            type="text"
+            placeholder="Full Name"
+        >
+
+        <input
+            id="usernameInput"
+            type="text"
+            placeholder="Username"
+        >
+
+        <input
+            id="emailInput"
+            type="email"
+            placeholder="Email"
+        >
+
+        <input
+            id="passwordInput"
+            type="password"
+            placeholder="Password"
+        >
+
+        <button id="authButton" onclick="createAccount()">
+            Create Account
+        </button>
+
+        <div class="auth-switch">
+            <span id="switchText">
+                Already have an account?
+            </span>
+
+            <button onclick="switchAuth()">
+                Login
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PROFILE PANEL -->
+
+<div id="profilePanel" class="profile-panel">
+
+    <button class="close-profile" onclick="closeProfile()">
+        ×
+    </button>
+
+    <div class="profile-avatar">
+        👤
+    </div>
+
+    <h2 id="profileName">
+        User
+    </h2>
+
+    <p id="profileUsername">
+        @username
+    </p>
+
+    <div class="profile-stats">
+
+        <div>
+            <strong>0</strong>
+            <span>Following</span>
+        </div>
+
+        <div>
+            <strong>0</strong>
+            <span>Followers</span>
+        </div>
+
+        <div>
+            <strong>0</strong>
+            <span>Likes</span>
+        </div>
+
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+
+<style>
+
+/* AUTH SCREEN */
+
+.auth-screen{
+
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #08000f,
+        #21002f,
+        #500018
+    );
+
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.auth-box{
+
+    width:100%;
+    max-width:380px;
+
+    background:rgba(20,20,20,.94);
+
+    padding:30px 22px;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+
+    text-align:center;
+}
+
+.auth-logo{
+
+    font-size:38px;
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    margin-bottom:10px;
+}
+
+.auth-box h2{
+
+    margin:10px 0 5px;
+
+    font-size:25px;
+}
+
+.auth-box p{
+
+    color:#aaa;
+
+    margin-bottom:22px;
+
+}
+
+.auth-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:7px 0;
+
+    border:1px solid #444;
+
+    border-radius:12px;
+
+    background:#111;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+.auth-box input:focus{
+
+    border-color:#ff1744;
+}
+
+#authButton{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:12px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#ff1744;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+}
+
+.auth-switch{
+
+    margin-top:20px;
+
+    color:#aaa;
+
+    font-size:14px;
+}
+
+.auth-switch button{
+
+    background:none;
+
+    border:0;
+
+    color:#ff1744;
+
+    font-weight:bold;
+
+    font-size:14px;
+}
+
+
+/* PROFILE */
+
+.profile-panel{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#111;
+
+    z-index:10000;
+
+    display:none;
+
+    text-align:center;
+
+    padding:70px 25px;
+}
+
+.close-profile{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:42px;
+
+    height:42px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#333;
+
+    color:white;
+
+    font-size:28px;
+}
+
+.profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#333;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:45px;
+
+    margin:20px auto;
+}
+
+.profile-panel h2{
+
+    margin:10px 0 5px;
+}
+
+.profile-panel p{
+
+    color:#aaa;
+}
+
+.profile-stats{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    margin:35px 0;
+
+}
+
+.profile-stats div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.profile-stats span{
+
+    color:#999;
+
+    font-size:12px;
+}
+
+.logout-btn{
+
+    padding:13px 35px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#ff1744;
+
+    color:white;
+
+    font-weight:bold;
+}
+
+</style>
+
+
+<script>
+
+/* AUTH MODE */
+
+let loginMode = false;
+
+
+/* CHECK EXISTING ACCOUNT */
+
+window.addEventListener("load", function(){
+
+    const savedUser = localStorage.getItem("vyroUser");
+
+    if(savedUser){
+
+        document.getElementById("authScreen").style.display = "none";
+
+    }
+
+});
+
+
+/* SWITCH LOGIN / SIGNUP */
+
+function switchAuth(){
+
+    loginMode = !loginMode;
+
+    const name = document.getElementById("nameInput");
+    const username = document.getElementById("usernameInput");
+    const title = document.getElementById("authTitle");
+    const subtitle = document.getElementById("authSubtitle");
+    const button = document.getElementById("authButton");
+    const switchText = document.getElementById("switchText");
+
+    if(loginMode){
+
+        title.innerText = "Welcome Back";
+
+        subtitle.innerText =
+        "Login to your VYRO account";
+
+        name.style.display = "none";
+
+        username.style.display = "none";
+
+        button.innerText = "Login";
+
+        button.setAttribute(
+            "onclick",
+            "loginAccount()"
+        );
+
+        switchText.innerText =
+        "Don't have an account?";
+
+    }else{
+
+        title.innerText = "Create Account";
+
+        subtitle.innerText =
+        "Join the future of short videos";
+
+        name.style.display = "block";
+
+        username.style.display = "block";
+
+        button.innerText =
+        "Create Account";
+
+        button.setAttribute(
+            "onclick",
+            "createAccount()"
+        );
+
+        switchText.innerText =
+        "Already have an account?";
+
+    }
+
+}
+
+
+/* CREATE ACCOUNT */
+
+function createAccount(){
+
+    const name =
+    document.getElementById("nameInput").value.trim();
+
+    const username =
+    document.getElementById("usernameInput").value.trim();
+
+    const email =
+    document.getElementById("emailInput").value.trim();
+
+    const password =
+    document.getElementById("passwordInput").value;
+
+    if(!name || !username || !email || !password){
+
+        alert("Please fill all fields.");
+
+        return;
+
+    }
+
+    if(password.length < 6){
+
+        alert("Password must be at least 6 characters.");
+
+        return;
+
+    }
+
+    const user = {
+
+        name:name,
+
+        username:username,
+
+        email:email,
+
+        password:password
+
+    };
+
+    localStorage.setItem(
+        "vyroUser",
+        JSON.stringify(user)
+    );
+
+    document.getElementById("authScreen").style.display =
+    "none";
+
+    updateProfile();
+
+}
+
+
+/* LOGIN */
+
+function loginAccount(){
+
+    const username =
+    document.getElementById("emailInput").value.trim();
+
+    const password =
+    document.getElementById("passwordInput").value;
+
+    const saved =
+    localStorage.getItem("vyroUser");
+
+    if(!saved){
+
+        alert("No VYRO account found. Create an account first.");
+
+        return;
+
+    }
+
+    const user = JSON.parse(saved);
+
+    if(
+        (username === user.email ||
+         username === user.username)
+        &&
+        password === user.password
+    ){
+
+        document.getElementById("authScreen").style.display =
+        "none";
+
+        updateProfile();
+
+    }else{
+
+        alert("Incorrect username/email or password.");
+
+    }
+
+}
+
+
+/* UPDATE PROFILE */
+
+function updateProfile(){
+
+    const saved =
+    localStorage.getItem("vyroUser");
+
+    if(!saved) return;
+
+    const user = JSON.parse(saved);
+
+    document.getElementById("profileName").innerText =
+    user.name;
+
+    document.getElementById("profileUsername").innerText =
+    "@" + user.username;
+
+}
+
+
+/* PROFILE BUTTON */
+
+document.querySelector(".nav-item:last-child")
+.addEventListener("click", function(){
+
+    const saved =
+    localStorage.getItem("vyroUser");
+
+    if(!saved){
+
+        document.getElementById("authScreen").style.display =
+        "flex";
+
+        return;
+
+    }
+
+    updateProfile();
+
+    document.getElementById("profilePanel").style.display =
+    "block";
+
+});
+
+
+/* CLOSE PROFILE */
+
+function closeProfile(){
+
+    document.getElementById("profilePanel").style.display =
+    "none";
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    localStorage.removeItem("vyroUser");
+
+    document.getElementById("profilePanel").style.display =
+    "none";
+
+    document.getElementById("authScreen").style.display =
+    "flex";
+
+    loginMode = false;
+
+}
+
+</script>
+<!-- VYRO PROFESSIONAL PROFILE -->
+
+<style>
+
+.edit-profile-btn{
+
+    width:80%;
+
+    max-width:300px;
+
+    margin:10px auto;
+
+    padding:13px;
+
+    border:1px solid #555;
+
+    border-radius:12px;
+
+    background:#222;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+}
+
+.profile-bio{
+
+    color:#bbb;
+
+    font-size:14px;
+
+    margin:12px auto 20px;
+
+    max-width:330px;
+
+    line-height:1.5;
+
+}
+
+.edit-box{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.88);
+
+    z-index:11000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+}
+
+.edit-card{
+
+    width:100%;
+
+    max-width:380px;
+
+    background:#181818;
+
+    border-radius:22px;
+
+    padding:25px;
+
+}
+
+.edit-card h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.edit-card input,
+
+.edit-card textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:7px 0;
+
+    border:1px solid #444;
+
+    border-radius:11px;
+
+    background:#0d0d0d;
+
+    color:white;
+
+    outline:none;
+
+}
+
+.edit-card textarea{
+
+    height:90px;
+
+    resize:none;
+
+}
+
+.save-profile{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:10px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:#ff1744;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+}
+
+.cancel-profile{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:8px;
+
+    border:0;
+
+    background:#333;
+
+    color:white;
+
+    border-radius:11px;
+
+}
+
+.change-photo{
+
+    display:block;
+
+    text-align:center;
+
+    color:#ff1744;
+
+    margin:10px 0;
+
+    font-size:14px;
+
+}
+
+.profile-avatar{
+
+    overflow:hidden;
+
+}
+
+.profile-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+</style>
+
+
+<!-- EDIT PROFILE WINDOW -->
+
+<div id="editBox" class="edit-box">
+
+    <div class="edit-card">
+
+        <h2>Edit Profile</h2>
+
+        <input
+            id="editName"
+            type="text"
+            placeholder="Your Name"
+        >
+
+        <input
+            id="editUsername"
+            type="text"
+            placeholder="Username"
+        >
+
+        <textarea
+            id="editBio"
+            placeholder="Write your bio..."
+        ></textarea>
+
+        <label class="change-photo">
+
+            📷 Change Profile Picture
+
+            <input
+                id="profilePhoto"
+                type="file"
+                accept="image/*"
+                style="display:none"
+            >
+
+        </label>
+
+        <button
+            class="save-profile"
+            onclick="saveVYROProfile()"
+        >
+            Save Profile
+        </button>
+
+        <button
+            class="cancel-profile"
+            onclick="closeEditProfile()"
+        >
+            Cancel
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ADD BIO + EDIT BUTTON */
+
+const profilePanel =
+document.getElementById("profilePanel");
+
+const stats =
+profilePanel.querySelector(".profile-stats");
+
+const editButton =
+document.createElement("button");
+
+editButton.className =
+"edit-profile-btn";
+
+editButton.innerText =
+"✏️ Edit Profile";
+
+editButton.onclick =
+openEditProfile;
+
+stats.after(editButton);
+
+
+/* BIO */
+
+const bio =
+document.createElement("div");
+
+bio.id =
+"profileBio";
+
+bio.className =
+"profile-bio";
+
+bio.innerText =
+"Welcome to my VYRO profile 🚀";
+
+editButton.after(bio);
+
+
+/* LOAD PROFILE */
+
+function loadVYROProfile(){
+
+    const saved =
+    localStorage.getItem("vyroProfile");
+
+    if(!saved) return;
+
+    const profile =
+    JSON.parse(saved);
+
+    if(profile.name){
+
+        document.getElementById(
+            "profileName"
+        ).innerText = profile.name;
+
+    }
+
+    if(profile.username){
+
+        document.getElementById(
+            "profileUsername"
+        ).innerText =
+        "@" + profile.username;
+
+    }
+
+    if(profile.bio){
+
+        document.getElementById(
+            "profileBio"
+        ).innerText =
+        profile.bio;
+
+    }
+
+    if(profile.photo){
+
+        document.querySelector(
+            ".profile-avatar"
+        ).innerHTML =
+        `<img src="${profile.photo}">`;
+
+    }
+
+}
+
+
+/* OPEN EDIT */
+
+function openEditProfile(){
+
+    const saved =
+    localStorage.getItem("vyroProfile");
+
+    if(saved){
+
+        const profile =
+        JSON.parse(saved);
+
+        document.getElementById(
+            "editName"
+        ).value =
+        profile.name || "";
+
+        document.getElementById(
+            "editUsername"
+        ).value =
+        profile.username || "";
+
+        document.getElementById(
+            "editBio"
+        ).value =
+        profile.bio || "";
+
+    }else{
+
+        const user =
+        JSON.parse(
+            localStorage.getItem("vyroUser")
+        );
+
+        if(user){
+
+            document.getElementById(
+                "editName"
+            ).value =
+            user.name || "";
+
+            document.getElementById(
+                "editUsername"
+            ).value =
+            user.username || "";
+
+        }
+
+    }
+
+    document.getElementById(
+        "editBox"
+    ).style.display =
+    "flex";
+
+}
+
+
+/* SAVE PROFILE */
+
+function saveVYROProfile(){
+
+    const name =
+    document.getElementById(
+        "editName"
+    ).value.trim();
+
+    const username =
+    document.getElementById(
+        "editUsername"
+    ).value.trim();
+
+    const bioText =
+    document.getElementById(
+        "editBio"
+    ).value.trim();
+
+    if(!name || !username){
+
+        alert(
+            "Name and username are required."
+        );
+
+        return;
+
+    }
+
+    const oldProfile =
+    localStorage.getItem(
+        "vyroProfile"
+    );
+
+    let profile =
+    oldProfile
+    ? JSON.parse(oldProfile)
+    : {};
+
+    profile.name =
+    name;
+
+    profile.username =
+    username;
+
+    profile.bio =
+    bioText ||
+    "Welcome to my VYRO profile 🚀";
+
+
+    localStorage.setItem(
+        "vyroProfile",
+        JSON.stringify(profile)
+    );
+
+    /* UPDATE MAIN ACCOUNT */
+
+    const savedUser =
+    localStorage.getItem(
+        "vyroUser"
+    );
+
+    if(savedUser){
+
+        const user =
+        JSON.parse(savedUser);
+
+        user.name =
+        name;
+
+        user.username =
+        username;
+
+        localStorage.setItem(
+            "vyroUser",
+            JSON.stringify(user)
+        );
+
+    }
+
+    loadVYROProfile();
+
+    closeEditProfile();
+
+}
+
+
+/* PROFILE PHOTO */
+
+document.getElementById(
+    "profilePhoto"
+).addEventListener(
+    "change",
+    function(){
+
+        const file =
+        this.files[0];
+
+        if(!file) return;
+
+        if(!file.type.startsWith("image/")){
+
+            alert(
+                "Please select an image."
+            );
+
+            return;
+
+        }
+
+        const reader =
+        new FileReader();
+
+        reader.onload =
+        function(){
+
+            const saved =
+            localStorage.getItem(
+                "vyroProfile"
+            );
+
+            let profile =
+            saved
+            ? JSON.parse(saved)
+            : {};
+
+            profile.photo =
+            reader.result;
+
+            localStorage.setItem(
+                "vyroProfile",
+                JSON.stringify(profile)
+            );
+
+            document.querySelector(
+                ".profile-avatar"
+            ).innerHTML =
+            `<img src="${reader.result}">`;
+
+        };
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* CLOSE EDIT */
+
+function closeEditProfile(){
+
+    document.getElementById(
+        "editBox"
+    ).style.display =
+    "none";
+
+}
+
+
+/* LOAD WHEN APP OPENS */
+
+loadVYROProfile();
+
+</script>
